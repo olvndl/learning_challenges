@@ -34,10 +34,10 @@ int main() {
     int res = binary_search(arr, size, target);
 
     if (res == -1) {
-        printf("Target not found");
+        printf("Target not found\n");
     }
     else {
-        printf("Element %d stored in %d index", target, res);
+        printf("Element %d stored in index %d\n", target, res);
     }
     return 0;
 }
