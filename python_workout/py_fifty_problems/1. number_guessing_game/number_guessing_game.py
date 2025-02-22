@@ -1,28 +1,56 @@
 from random import randint
 
 
-def guessing_game():
-    correct_answer = randint(0, 3)
+def play_guessing_game(first_round):
+    MIN_NUMBER = 0
+    MAX_NUMBER = 100
+    MAX_ATTEMPTS = 6
 
-    while True:
+    correct_answer = randint(MIN_NUMBER, MAX_NUMBER)
+    attempts = 0
+
+    if first_round:
+        print("Welcome to the Guessing Game! ", end="")
+    else:
+        print("Welcome back to the Guessing Game! ", end="")
+
+    print(f"Guess a number between {MIN_NUMBER} and {MAX_NUMBER}.\n")
+
+    while attempts < MAX_ATTEMPTS:
         try:
             user_answer = int(input("What is your guess? "))
         except ValueError:
-            print("Not a number, please use integers only")
+            print("Invalid input. Please enter an integer.")
             continue
 
         if user_answer == correct_answer:
-            print(f'Right! Correct answer is: {user_answer}')
+            print(f"Congratulations! You guessed the correct number: {user_answer}.")
             break
         elif user_answer > correct_answer:
-            print(f"'Your answer is: {user_answer}, is too high!')")
+            print(f"Your guess {user_answer} is too high!")
         else:
-            print(f"'Your answer is: {user_answer}, is too low!')")
+            print(f"Your guess {user_answer} is too low!")
 
-    play_agan = input("Do you want to play again y/n? ")
+        attempts += 1
 
-    if play_agan == "y":
-        guessing_game()
+    else:
+        print(f"Sorry, you've used all {MAX_ATTEMPTS} attempts."
+              f" The correct number was {correct_answer}.")
 
 
-guessing_game()
+def main():
+    first_run = True
+
+    while True:
+        play_guessing_game(first_run)
+
+        play_again = input("Do you want to play again? (y/n): ").strip().lower()
+        if play_again != "y":
+            print("Thanks for playing! Goodbye!")
+            break
+
+        first_run = False
+
+
+if __name__ == "__main__":
+    main()
