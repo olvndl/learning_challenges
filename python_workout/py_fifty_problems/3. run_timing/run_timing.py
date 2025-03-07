@@ -1,9 +1,3 @@
-import pytest
-
-
-# Assume run_timing is imported from your module
-# from your_module import run_timing
-
 def run_timing():
     total_time = 0
     total_runs = 0
@@ -18,3 +12,6 @@ def run_timing():
     average_run_time = total_time / total_runs
     print(
         f"\nAverage running time: {average_run_time}\nTotal runs: {total_runs}")
+
+
+run_timing()
