@@ -1,12 +1,14 @@
 def mysum(*numbers):
+    result = 0
+
     for number in numbers:
         if not isinstance(number, (int, float)):
             print("Not all values are of numeric type!")
             return -1
-    result = 0
-    for number in numbers:
+
         result += number
-    return result
+
+        return result
 
 
 assert mysum(1, 2, 3) == 6
